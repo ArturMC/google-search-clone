@@ -1,4 +1,6 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Avatar from '../components/Avatar';
+import {MicrophoneIcon, ViewGridIcon} from "@heroicons/react/solid"
 
 export default function Home() {
   return (
@@ -22,16 +24,17 @@ export default function Home() {
           <p className="link">Images</p>
 
           {/* Icon */}
-
+          <ViewGridIcon className="h-10 w-10 p-2 rounded-full hover:bg-gray-100 cursor-pointer"/>
 
           {/* Avatar */}
+          <Avatar url="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" />
 
         </div>
 
       </header>
 
       {/* Body */}
-
+      
 
       {/* Footer */}
       

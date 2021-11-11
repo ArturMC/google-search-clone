@@ -1,21 +1,55 @@
-import Head from 'next/head';
-import Header from '../components/Header';
+// Import Next.js tools
+import Head from "next/head";
+import { useRouter } from "next/router";
 
-function Search() {
-    return (
-        <div>
-            <Head>
-                <title>Search Results</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+// Import Components
+import Header from "../components/Header";
+import SearchResults from "../components/SearchResults";
+import Response from "../Response";
 
-            {/*Header*/}
-            <Header />
+//Import private keys from config.js
+const API_KEY = process.env.API_KEY;
+const CONTEXT_KEY = process.env.CONTEXT_KEY;
 
-            {/*Search Results*/}
+//Implement Search Page
+function Search({ results }) {
+  const router = useRouter();
 
-        </div>
-    )
+  console.log(results);
+  return (
+    <div>
+      <Head>
+        <title>{router.query.term} - Google Search</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      {/*Header*/}
+      <Header />
+
+      {/*Search Results*/}
+      <SearchResults results={results} />
+    </div>
+  );
 }
 
 export default Search;
+
+export async function getServerSideProps(context) {
+  // Use static data in order to not exceed google's maximum daily API calls
+  const useDummyData = true;
+  const startIndex = context.query.start || "0";
+
+  // Fetch the search results based off user's search query
+  const data = useDummyData
+    ? Response
+    : await fetch(
+        `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
+      ).then((response) => response.json());
+
+  // Pass results to the client after the server has rendered
+  return {
+    props: {
+      results: data,
+    },
+  };
+}

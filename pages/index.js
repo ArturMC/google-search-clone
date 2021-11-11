@@ -15,6 +15,7 @@ export default function Home() {
   const router = useRouter();
   const searchInputRef = useRef(null);
 
+  {/*Function to get the input from the search box and route it to a new page with that search*/}
   const search = (e) => {
     e.preventDefault();
     const term = searchInputRef.current.value;
@@ -48,7 +49,7 @@ export default function Home() {
           <ViewGridIcon className="h-10 w-10 p-2 rounded-full hover:bg-gray-100 cursor-pointer"/>
 
           {/* Avatar */}
-          <Avatar url="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80" />
+          <Avatar url="https://source.unsplash.com/iEEBWgY_6lA" />
 
         </div>
 

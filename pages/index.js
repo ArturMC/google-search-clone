@@ -1,11 +1,15 @@
 import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from "next/router";
+
+import { useRef } from "react";
+
 import Avatar from '../components/Avatar';
+import Footer from '../components/Footer';
+
 import {MicrophoneIcon, ViewGridIcon} from "@heroicons/react/solid";
 import {SearchIcon} from "@heroicons/react/outline";
-import Image from 'next/image';
-import Footer from '../components/Footer';
-import { useRef } from "react";
-import { useRouter } from "next/router";
+
 
 export default function Home() {
   const router = useRouter();

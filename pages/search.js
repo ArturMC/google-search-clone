@@ -36,7 +36,7 @@ export default Search;
 
 export async function getServerSideProps(context) {
   // Use static data in order to not exceed google's maximum daily API calls
-  const useDummyData = true;
+  const useDummyData = false;
   const startIndex = context.query.start || "0";
 
   // Fetch the search results based off user's search query

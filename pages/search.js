@@ -7,10 +7,6 @@ import Header from "../components/Header";
 import SearchResults from "../components/SearchResults";
 import Response from "../Response";
 
-//Import private keys from config.js
-const API_KEY = process.env.API_KEY;
-const CONTEXT_KEY = process.env.CONTEXT_KEY;
-
 //Implement Search Page
 function Search({ results }) {
   const router = useRouter();
@@ -35,6 +31,10 @@ function Search({ results }) {
 export default Search;
 
 export async function getServerSideProps(context) {
+  //Import private keys from config.js
+  const API_KEY = process.env.API_KEY;
+  const CONTEXT_KEY = process.env.CONTEXT_KEY;
+
   // Use static data in order to not exceed google's maximum daily API calls
   const useDummyData = false;
   const startIndex = context.query.start || "0";

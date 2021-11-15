@@ -35,11 +35,11 @@ export async function getServerSideProps(context) {
   const API_KEY = process.env.API_KEY;
   const CONTEXT_KEY = process.env.CONTEXT_KEY;
 
-  // Use static data in order to not exceed google's maximum daily API calls
+  // Use static data in order to not exceed googles maximum daily API calls
   const useDummyData = false;
   const startIndex = context.query.start || "0";
 
-  // Fetch the search results based off user's search query
+  // Fetch the search results based off users search query
   const data = useDummyData
     ? Response
     : await fetch(
